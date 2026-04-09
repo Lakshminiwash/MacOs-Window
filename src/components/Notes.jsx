@@ -1,8 +1,9 @@
 import React, { useEffect,useState } from 'react'
-import Markdown from 'react-markdown';  
+import Markdown from 'react-markdown'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atelierDuneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import MacWindow from './MacWindow'
+import notesFile from "../assets/notes.txt"
 import "./notes.scss"
 
 
@@ -11,7 +12,7 @@ const Notes = ({ windowName, setWindowsState }) => {
     const [ markdown, setMarkdown ] = useState(null)
 
     useEffect(() => {
-        fetch("/notes.txt")
+        fetch(notesFile)
             .then(res => res.text())
             .then(text => setMarkdown(text))
     }, [])
